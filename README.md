@@ -6,16 +6,17 @@ selectors. Also, it was a requirement to use the class AbstractUIObject and use 
 ## Explanation
 To fulfill the requirements of this homework, I followed the next steps:
 
-1- First I've created a page class. This class must extend from AbstractPage, and it has to override the constructor and
+<ol>
+  <li>First I've created a page class. This class must extend from AbstractPage, and it has to override the constructor and
 set it as public. We can create Abstract class named AbstractFacebookPage for example, in case that all the pages have a
 common behavior such as a footer or a header and extract that common behavior in the abstract class.
-The abstract class must extend from AbstractPage and the rest of pages must extend from that abstract class we’ve created.
-
-2- For each element, I used the FindBy annotation and specified the selector I wanted to use to find the element 
+The abstract class must extend from AbstractPage and the rest of pages must extend from that abstract class we’ve created.</li>
+  
+  <li>For each element, I used the FindBy annotation and specified the selector I wanted to use to find the element 
 (xpath, id or css) and pass the xpath or expression. Then, below these annotations I created a private ExtendedWebElement,
-emailInputField, for example.
+emailInputField, for example.</li>
 
-3- For each element I added in the page class, I had to create getters. Also, we can create methods like typeEmail,
+  <li>For each element I added in the page class, I had to create getters. Also, we can create methods like typeEmail,
 typePassword, clickLoginButton, isLoginErrorMessagePresent. To write something we use the .type(String text) method from
 the web element. To click we use .click() but almost always when we use this click method, we have to return a new page.
 Other methods of ExtendedWebElement are getText(), getAttribute() and select(). If we clicked LoginButton then we have
@@ -23,18 +24,20 @@ to return a new instance of HomePage class. This HomePage class must extend from
 It means that we have to use the getDriver() method to pass it in its constructor.
 And to know if the login was unsuccessful, we have to find an error message and create a method that returns true or 
 false depending on if that message is present or not, using the .isElementPresent method. 
-
-4- When I finished finding the elements and creating methods to interact with them, I created in the
+</li>
+  <li>When I finished finding the elements and creating methods to interact with them, I created in the
 src/test/com/solvd/automation/gui a class named WebGithubTest which must implement IAbstractTest. After, I needed to 
 create a method with the Test annotation and create an instance of the page class, and used the .open() method to 
 automatically open a session. Then, I needed to use the methods created to interact with the elements and press a
 submit button at the end.
-
-5- After doing the steps to perform an action, I had to assert something. For example, using 
+</li>
+  <li>After doing the steps to perform an action, I had to assert something. For example, using 
 assertTrue(loginPage.isLoginErrorMessagePresent(),”There was no error logging in”). 
 In general, it is good to check if the elements are present before working with them.
 Also, we can validate that the url of the page is the correct using the driver.getCurrentUrl().contains or 
 .equals() methods.
+</li>
+</ol>
 
 ## What did I learn?
 
