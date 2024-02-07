@@ -1,0 +1,19 @@
+[2024-02-07 10:17:30] [1] [INFO] 
+=========== WebDriver configuration ===========
+url=https://github.com
+selenium_url=http://localhost:4444/wd/hub
+-------------- Driver capabilities ------------
+browserName=chrome
+===============================================
+
+[2024-02-07 10:17:30] [1] [WARN] Reporting disabled: using no op test run registrar
+[2024-02-07 10:17:32] [1] [INFO] [TestNG] Running:
+  /home/nazareno/.cache/JetBrains/IntelliJIdea2023.3/temp-testng-customsuite.xml
+
+[2024-02-07 10:17:32] [1] [INFO] Set thread-count=1
+[2024-02-07 10:17:32] [1] [INFO] Set data-provider-thread-count=1
+[2024-02-07 10:17:32] [1] [INFO] CARINA_CORE_VERSION: 1.1.3
+[2024-02-07 10:17:45] [1] [INFO] INFO: '**************** Test execution summary ****************'.
+[2024-02-07 10:17:45] [1] [INFO] RESULT #1: TEST [web-gui-testing - validateWrongLoginAttemptTest [L01]] PASS [log=file:///home/nazareno/dev/test-automation-course/web-gui-testing/./reports/1707344250289/a866e1e1-d73b-4b29-8629-7c02eb5df3b7/test.log]
+[2024-02-07 10:17:45] [1] [INFO] RESULT #2: TEST [web-gui-testing - validateWrongLoginAttemptTest [L02]] PASS [log=file:///home/nazareno/dev/test-automation-course/web-gui-testing/./reports/1707344250289/c3c8c7b7-9b14-411e-911c-165fdd65a478/test.log]
+[2024-02-07 10:17:45] [1] [INFO] RESULT #3: TEST [web-gui-testing - validateWrongLoginAttemptTest [L03]] PASS [log=file:///home/nazareno/dev/test-automation-course/web-gui-testing/./reports/1707344250289/300de674-eefd-4e5a-93be-95e9093049b5/test.log]

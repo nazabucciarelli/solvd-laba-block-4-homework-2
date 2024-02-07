@@ -1,9 +1,0 @@
-{
-  "userId": "${userId}",
-  "products": [
-    {
-      "id": "${productId}",
-      "quantity": "${quantity}"
-    }
-  ]
-}
