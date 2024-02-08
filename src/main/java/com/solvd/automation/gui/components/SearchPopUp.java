@@ -18,14 +18,6 @@ public class SearchPopUp extends AbstractUIObject {
         super(driver);
     }
 
-    public ExtendedWebElement getResultSearchOption() {
-        return resultSearchOption;
-    }
-
-    public ExtendedWebElement getSearchInput() {
-        return searchInput;
-    }
-
     public ResultSearchPage clickResultSearchOption() {
         resultSearchOption.click();
         return new ResultSearchPage(getDriver());

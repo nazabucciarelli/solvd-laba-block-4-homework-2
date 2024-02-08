@@ -4,6 +4,10 @@ import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.FluentWait;
+import org.openqa.selenium.support.ui.Wait;
+
+import java.time.Duration;
 
 public class SignUpPage extends AbstractPage {
 
@@ -28,57 +32,41 @@ public class SignUpPage extends AbstractPage {
     @FindBy(xpath = "//button[@data-continue-to = 'captcha-and-submit-container']")
     private ExtendedWebElement emailPreferencesContinueButton;
 
+    private final Wait<WebDriver> waiter;
+
     public SignUpPage(WebDriver driver) {
         super(driver);
-    }
-
-    public ExtendedWebElement getEmailInput() {
-        return emailInput;
-    }
-
-
-    public ExtendedWebElement getPasswordInput() {
-        return passwordInput;
-    }
-
-
-    public ExtendedWebElement getUsernameInput() {
-        return usernameInput;
-    }
-
-    public ExtendedWebElement getEmailContinueButton() {
-        return emailContinueButton;
-    }
-
-    public ExtendedWebElement getPasswordContinueButton() {
-        return passwordContinueButton;
-    }
-
-    public ExtendedWebElement getUsernameContinueButton() {
-        return usernameContinueButton;
-    }
-
-    public ExtendedWebElement getEmailPreferencesContinueButton() {
-        return emailPreferencesContinueButton;
+        waiter = new FluentWait<>(driver)
+                .withTimeout(Duration.ofSeconds(10L))
+                .pollingEvery(Duration.ofMillis(300));
     }
 
     public void clickEmailContinueButton() {
+        waiter.until(webDriver -> isContinueButtonEnabled(emailContinueButton));
         emailContinueButton.click();
+        emailContinueButton.waitUntilElementDisappear(5L);
     }
 
     public void clickPasswordContinueButton() {
+        waiter.until(webDriver -> isContinueButtonEnabled(passwordContinueButton));
         passwordContinueButton.click();
+        passwordContinueButton.waitUntilElementDisappear(5L);
     }
 
     public void clickUsernameContinueButton() {
+        waiter.until(webDriver -> isContinueButtonEnabled(usernameContinueButton));
         usernameContinueButton.click();
+        usernameContinueButton.waitUntilElementDisappear(5L);
     }
 
     public void clickEmailPreferencesContinueButton() {
+        waiter.until(webDriver -> isContinueButtonEnabled(emailPreferencesContinueButton));
         emailPreferencesContinueButton.click();
+        emailPreferencesContinueButton.waitUntilElementDisappear(5L);
     }
 
     public void typeEmailInput(String text) {
+        waiter.until(webDriver -> emailInput.isVisible());
         emailInput.type(text);
     }
 
@@ -116,5 +104,9 @@ public class SignUpPage extends AbstractPage {
 
     public boolean isEmailPreferencesContinueButtonPresent() {
         return emailPreferencesContinueButton.isPresent();
+    }
+
+    private boolean isContinueButtonEnabled(ExtendedWebElement button) {
+        return button.getAttribute("disabled") == null;
     }
 }

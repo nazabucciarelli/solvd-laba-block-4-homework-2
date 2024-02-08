@@ -15,10 +15,10 @@ import org.testng.asserts.SoftAssert;
 public class WebGithubTest implements IAbstractTest {
 
     @DataProvider(name = "loginData")
-    public Object[][] loginData(){
-        return new Object[][]{ {"charlie", "secret"},
-                               {"louis333", "githubpass"},
-                               {"johndoe", "487392421"}};
+    public Object[][] loginData() {
+        return new Object[][]{{"charlie", "secret"},
+                {"louis333", "githubpass"},
+                {"johndoe", "487392421"}};
     }
 
     @Test(dataProvider = "loginData")
@@ -40,49 +40,42 @@ public class WebGithubTest implements IAbstractTest {
 
     @Test
     @MethodOwner(owner = "nazareno")
-    public void verifySearchResultsTest(){
+    public void verifySearchResultsTest() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
-        Assert.assertTrue(homePage.getHeader().isShowSearchPopUpButtonPresent(),"The show search pop-up button is not present");
+        Assert.assertTrue(homePage.getHeader().isShowSearchPopUpButtonPresent(), "The show search pop-up button is not present");
         SearchPopUp searchPopUp = homePage.getHeader().clickShowSearchPopUpButton();
+        Assert.assertTrue(searchPopUp.isSearchInputPresent(), "The search input is not present");
         searchPopUp.typeSearchInput("carina-demo");
-        Assert.assertTrue(searchPopUp.isResultSearchOptionPresent(),"The result search option is not present");
+        Assert.assertTrue(searchPopUp.isResultSearchOptionPresent(), "The result search option is not present");
         ResultSearchPage resultSearchPage = searchPopUp.clickResultSearchOption();
         pause(5);
-        Assert.assertFalse(resultSearchPage.getResults().isEmpty(),"The result search is empty");
+        Assert.assertFalse(resultSearchPage.getResults().isEmpty(), "The result search is empty");
     }
 
     @Test
     @MethodOwner(owner = "nazareno")
-    public void verifyRegisterProcessTest(){
+    public void verifyRegisterProcessTest() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         SoftAssert sa = new SoftAssert();
         sa.assertTrue(homePage.getHeader().isSignUpButtonPresent(), "The Sign Up button is not present");
         SignUpPage signUpPage = homePage.getHeader().clickSignUpButton();
-        pause(5);
-        sa.assertTrue(signUpPage.isEmailInputPresent(),"The email input is not present");
+        sa.assertTrue(signUpPage.isEmailInputPresent(), "The email input is not present");
         signUpPage.typeEmailInput("nazareno@solvd.com");
-        pause(2);
-        sa.assertTrue(signUpPage.isEmailContinueButtonPresent(),"The email continue button is not present");
+        sa.assertTrue(signUpPage.isEmailContinueButtonPresent(), "The email continue button is not present");
         signUpPage.clickEmailContinueButton();
-        pause(2);
-        sa.assertTrue(signUpPage.isPasswordInputPresent(),"The password input is not present");
+        sa.assertTrue(signUpPage.isPasswordInputPresent(), "The password input is not present");
         signUpPage.typePasswordInput("password123NA");
-        pause(2);
-        sa.assertTrue(signUpPage.isPasswordContinueButtonPresent(),"The password continue button is not present");
+        sa.assertTrue(signUpPage.isPasswordContinueButtonPresent(), "The password continue button is not present");
         signUpPage.clickPasswordContinueButton();
-        pause(2);
-        sa.assertTrue(signUpPage.isUsernameInputPresent(),"The username input is not present");
+        sa.assertTrue(signUpPage.isUsernameInputPresent(), "The username input is not present");
         signUpPage.typeUsernameInput("nazarenoghub");
-        pause(2);
-        sa.assertTrue(signUpPage.isUsernameContinueButtonPresent(),"The username continue button is not present");
+        sa.assertTrue(signUpPage.isUsernameContinueButtonPresent(), "The username continue button is not present");
         signUpPage.clickUsernameContinueButton();
-        pause(2);
-        sa.assertTrue(signUpPage.isEmailPreferencesContinueButtonPresent(),"The email preferences continue button is" +
+        sa.assertTrue(signUpPage.isEmailPreferencesContinueButtonPresent(), "The email preferences continue button is" +
                 " not present");
         signUpPage.clickEmailPreferencesContinueButton();
-        pause(2);
         sa.assertAll();
     }
 

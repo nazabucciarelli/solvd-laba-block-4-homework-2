@@ -16,26 +16,31 @@ The abstract class must extend from AbstractPage and the rest of pages must exte
 (xpath, id or css) and pass the xpath or expression. Then, below these annotations I created a private ExtendedWebElement,
 emailInputField, for example.</li>
 
-  <li>For each element I added in the page class, I had to create getters. Also, we can create methods like typeEmail,
-typePassword, clickLoginButton, isLoginErrorMessagePresent. To write something we use the .type(String text) method from
-the web element. To click we use .click() but almost always when we use this click method, we have to return a new page.
-Other methods of ExtendedWebElement are getText(), getAttribute() and select(). If we clicked LoginButton then we have
-to return a new instance of the HomePage class. This HomePage class must extend from AbstractPage as well, as EVERY page. 
-It means that we have to use the getDriver() method to pass it in its constructor.
+  <li> Also, we can create methods like typeEmail, typePassword, clickLoginButton, isLoginErrorMessagePresent. To write 
+something we use the .type(String text) method from the web element. To click we use .click() but almost always when we 
+use this click method, we have to return a new page. Other methods of ExtendedWebElement are getText(), 
+getAttribute() and select(). If we clicked LoginButton then we have to return a new instance of the HomePage 
+class. This HomePage class must extend from AbstractPage as well, as EVERY page. It means that we have to use 
+the getDriver() method to pass it in its constructor.
 And to know if the login was unsuccessful, we have to find an error message and create a method that returns true or 
 false depending on if that message is present or not, using the .isElementPresent method. 
 </li>
   <li>When I finished finding the elements and creating methods to interact with them, I created in the
 src/test/com/solvd/automation/gui package a class named WebGithubTest which must implement IAbstractTest. After, I needed to 
-create a method with the Test annotation and to create an instance of the page class, finally, I used the .open() method to 
-automatically open a session. Then, I needed to use the methods created to interact with the elements and press a
+create a method with the Test annotation and to create an instance of the page class. Finally, I used the .open() method to 
+automatically open a session. Then, I needed to use the created methods to interact with the elements and press a
 submit button at the end.
 </li>
   <li>After doing the steps to perform an action, I had to assert something. For example, using 
 assertTrue(loginPage.isLoginErrorMessagePresent(),”There was no error logging in”). 
 In general, it is good to check if the elements are present before working with them.
-Also, we can validate that the url of the page is the correct using the driver.getCurrentUrl().contains or 
+Also, we can validate that the url of the page is the correct using the driver.getCurrentUrl().contains() or 
 .equals() methods.
+</li>
+ <li>This is an additional step added after a correction made by my mentor. I realized that using the pause() method
+to pause the thread, is not a good approach. Instead, we have to use the element.waitUntilElementDisappear() method or to
+create a FluentWait instance to wait for events to perform specific actions. Also, I had created getters for each
+ExtendedWebElement but my mentor told me that we don't create such getters.So, I've already corrected these mistakes :).
 </li>
 </ol>
 

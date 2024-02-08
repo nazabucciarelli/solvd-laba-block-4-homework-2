@@ -23,31 +23,19 @@ public class SignInPage extends AbstractPage {
         super(driver);
     }
 
-    public ExtendedWebElement getUsernameInput() {
-        return usernameInput;
-    }
-
-    public ExtendedWebElement getPasswordInput() {
-        return passwordInput;
-    }
-
-    public ExtendedWebElement getSignInButton() {
-        return signInButton;
-    }
-
-    public void typeUsernameInput(String text){
+    public void typeUsernameInput(String text) {
         usernameInput.type(text);
     }
 
-    public void typePasswordInput(String text){
+    public void typePasswordInput(String text) {
         passwordInput.type(text);
     }
 
-    public void clickSignInButton(){
+    public void clickSignInButton() {
         signInButton.click();
     }
 
-    public boolean isIncorrectCredentialsMessagePresent(){
+    public boolean isIncorrectCredentialsMessagePresent() {
         return incorrectCredentialsError.isPresent();
     }
 
@@ -55,11 +43,11 @@ public class SignInPage extends AbstractPage {
         return signInButton.isPresent();
     }
 
-    public boolean isPasswordInputPresent(){
+    public boolean isPasswordInputPresent() {
         return passwordInput.isPresent();
     }
 
-    public boolean isUsernameInputPresent(){
+    public boolean isUsernameInputPresent() {
         return usernameInput.isPresent();
     }
 }

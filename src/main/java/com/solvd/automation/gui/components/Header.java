@@ -23,14 +23,6 @@ public class Header extends AbstractUIObject {
         super(driver, searchContext);
     }
 
-    public ExtendedWebElement getSignInButton() {
-        return signInButton;
-    }
-
-    public ExtendedWebElement getSignUpButton() {
-        return signUpButton;
-    }
-
     public SignInPage clickSignInButton() {
         signInButton.click();
         return new SignInPage(getDriver());
