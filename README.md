@@ -20,14 +20,14 @@ emailInputField, for example.</li>
 typePassword, clickLoginButton, isLoginErrorMessagePresent. To write something we use the .type(String text) method from
 the web element. To click we use .click() but almost always when we use this click method, we have to return a new page.
 Other methods of ExtendedWebElement are getText(), getAttribute() and select(). If we clicked LoginButton then we have
-to return a new instance of HomePage class. This HomePage class must extend from AbstractPage as well, as EVERY page. 
+to return a new instance of the HomePage class. This HomePage class must extend from AbstractPage as well, as EVERY page. 
 It means that we have to use the getDriver() method to pass it in its constructor.
 And to know if the login was unsuccessful, we have to find an error message and create a method that returns true or 
 false depending on if that message is present or not, using the .isElementPresent method. 
 </li>
   <li>When I finished finding the elements and creating methods to interact with them, I created in the
-src/test/com/solvd/automation/gui a class named WebGithubTest which must implement IAbstractTest. After, I needed to 
-create a method with the Test annotation and create an instance of the page class, and used the .open() method to 
+src/test/com/solvd/automation/gui package a class named WebGithubTest which must implement IAbstractTest. After, I needed to 
+create a method with the Test annotation and to create an instance of the page class, finally, I used the .open() method to 
 automatically open a session. Then, I needed to use the methods created to interact with the elements and press a
 submit button at the end.
 </li>
